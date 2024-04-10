@@ -1,0 +1,19 @@
+#!/bin/bash
+
+sites=("https://google.com" "https://facebook.com" "https://twitter.com")
+
+file="website_status.log"
+
+> $file
+
+for site in "${sites[@]}"
+do
+   if curl -o /dev/null -s -L --head -w "%{http_code}\n" "$site" | grep "200" > /dev/null
+   then
+     echo "$site" is UP >> "$file"
+   else
+      echo "$site" is DOWN >> "$file"
+   fi
+done
+
+echo "Result wrote to $file"

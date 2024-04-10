@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sites = (https://google.com https://facebook.com https://twitter.com)
+
+file = "website_status.log"
+
+for site in $sites
+do
+   if curl
+done
